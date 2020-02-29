@@ -1,0 +1,172 @@
+package com.example.mystudentapp.fragment;
+
+import android.content.Context;
+import android.net.Uri;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+
+import com.example.mystudentapp.R;
+import com.example.mystudentapp.activity.GroupEvaluateActivity;
+import com.example.mystudentapp.activity.InfoAddActivity;
+import com.example.mystudentapp.activity.SportsRankActivity;
+import com.example.mystudentapp.activity.StudentEvaluateActivity;
+import com.example.mystudentapp.activity.StudyRankActivity;
+import com.example.mystudentapp.activity.TeacherEvaluateActivity;
+import com.example.mystudentapp.adapter.MyAdapter;
+import com.example.mystudentapp.base.BaseFragment;
+import com.example.mystudentapp.base.GlideImageLoader;
+import com.example.mystudentapp.bean.Icon;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+
+import java.util.ArrayList;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link HomeFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link HomeFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class HomeFragment extends BaseFragment {
+
+    protected String[] titles;
+    private Banner banner;
+    private ArrayList<Integer> imagePath;
+    private ArrayList<Icon> mData = null;
+
+    private Context mContext;
+    private GridView grid_photo;
+    private BaseAdapter iconAdapter = null;
+
+
+
+
+    public HomeFragment() {
+
+    }
+
+
+    public static HomeFragment newInstance() {
+        HomeFragment fragment = new HomeFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, "");
+        args.putString(ARG_PARAM2, "");
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View inflate = inflater.inflate(R.layout.fragment_home, container, false);
+        initImage();
+
+        initView(inflate);
+        initBanner();
+
+        return inflate;
+    }
+
+    private void initBanner() {
+
+        banner.setImageLoader(new GlideImageLoader());
+        //设置图片集合
+        //资源文件
+        imagePath = new ArrayList<>();
+        imagePath.add(R.mipmap.loginbg);
+        imagePath.add(R.mipmap.imp2);
+
+        banner.setImages(imagePath);
+        //banner设置方法全部调用完毕时最后调用
+        banner.isAutoPlay(true);
+        //设置轮播时间
+        banner.setDelayTime(4000);
+        //设置指示器位置（当banner模式中有指示器时）
+
+        banner.setIndicatorGravity(BannerConfig.CENTER);
+        //banner设置方法全部调用完毕时最后调用
+        banner.start();
+    }
+
+    private void initView(View inflate) {
+        banner = inflate.findViewById(R.id.banner);
+
+        grid_photo = (GridView) inflate.findViewById(R.id.grid_photo);
+
+        iconAdapter = new MyAdapter<Icon>(mData, R.layout.item_grid_icon) {
+            @Override
+            public void bindView(ViewHolder holder, Icon obj) {
+                holder.setImageResource(R.id.img_icon, obj.getiId());
+                holder.setText(R.id.txt_icon, obj.getiName());
+            }
+
+
+        };
+        grid_photo.setAdapter(iconAdapter);
+        grid_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                      gotoActivity(StudentEvaluateActivity.class);
+
+                        break;
+                    case 1:
+                        gotoActivity(GroupEvaluateActivity.class);
+                        break;
+                    case 2:
+
+                        gotoActivity(TeacherEvaluateActivity.class);
+                        break;
+                    case 3:
+                        gotoActivity(InfoAddActivity.class);
+
+                        break;
+                    case 4:
+                        gotoActivity(StudyRankActivity.class);
+                        break;
+                    case 5:
+                        gotoActivity(SportsRankActivity.class);
+
+                        break;
+
+
+                }
+            }
+        });
+
+
+
+
+
+
+    }
+
+    private void initImage() {
+        mData = new ArrayList<Icon>();
+        mData.add(new Icon(R.mipmap.iv_icon_1, "学生互评"));
+        mData.add(new Icon(R.mipmap.iv_icon_2, "小组互评"));
+        mData.add(new Icon(R.mipmap.iv_icon_3, "教师评分"));
+        mData.add(new Icon(R.mipmap.iv_icon_4, "材料补充"));
+        mData.add(new Icon(R.mipmap.iv_icon_5, "学习成绩"));
+        mData.add(new Icon(R.mipmap.iv_icon_6, "体测成绩"));
+
+
+
+
+    }
+
+
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#ffffff"
+
+    android:orientation="vertical"
+    tools:context=".activity.LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"
+        >
+
+        <TextView
+            android:textSize="50px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="学生综合素质测评系统"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+           >
+
+
+        </TextView>
+
+
+
+
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="280dp"
+
+        android:layout_gravity="center"
+
+        android:layout_height="130dp">
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="40dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <EditText
+            android:id="@+id/et_user_name"
+            android:layout_width="match_parent"
+            android:hint="请输入学号或教职工号"
+            android:paddingLeft="5dp"
+            android:drawableLeft="@mipmap/name"
+            android:textSize="30px"
+            android:drawablePadding="15dp"
+            android:background="@drawable/bg_shape_gray"
+            android:layout_height="48dp">
+        </EditText>
+        <EditText
+            android:id="@+id/et_pwd"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:hint="请输入密码"
+            android:textSize="30px"
+            android:inputType="textPassword"
+            android:paddingLeft="5dp"
+            android:drawableLeft="@mipmap/pwd"
+            android:drawablePadding="15dp"
+            android:background="@drawable/bg_shape_gray"
+            android:layout_height="48dp">
+
+        </EditText>
+
+
+
+
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:textSize="30px"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_shape_red"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="#ffffff" />
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
