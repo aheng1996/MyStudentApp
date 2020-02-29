@@ -1,6 +1,9 @@
 package com.example.mystudentapp.db.bean;
 
-public class ChengjiBiao {
+import org.litepal.LitePal;
+import org.litepal.crud.LitePalSupport;
+
+public class ChengjiBiao  extends LitePalSupport {
     private int id;
     private String xuehao;
     private String xingming;
