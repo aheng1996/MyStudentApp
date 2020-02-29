@@ -11,6 +11,7 @@ import com.example.mystudentapp.base.BaseActivity;
 
 public class StudentEvaluateActivity extends BaseActivity implements View.OnClickListener {
     //学生互评界面
+    //出listview 点击item  跳转页面
 
 
     private ImageView ivBack;
