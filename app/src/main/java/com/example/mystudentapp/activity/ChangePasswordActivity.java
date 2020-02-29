@@ -11,6 +11,7 @@ import com.example.mystudentapp.base.BaseActivity;
 
 public class ChangePasswordActivity extends BaseActivity implements View.OnClickListener {
 
+    //推送测试
     private ImageView ivBack;
 
     @Override
