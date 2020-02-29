@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="ms" />
+    <version value="1" />
+    <list>
+        <mapping class="com.example.mystudentapp.db.bean.CaiLiaoBiao" />
+        <mapping class="com.example.mystudentapp.db.bean.ChengjiBiao" />
+        <mapping class="com.example.mystudentapp.db.bean.HuPing" />
+        <mapping class="com.example.mystudentapp.db.bean.Student" />
+        <mapping class="com.example.mystudentapp.db.bean.Teacher" />
+        <mapping class="com.example.mystudentapp.db.bean.TeacherPingjia" />
+        <mapping class="com.example.mystudentapp.db.bean.TiCe" />
+        <mapping class="com.example.mystudentapp.db.bean.XiaoZu" />
+        <mapping class="com.example.mystudentapp.db.bean.ZongHeCeping" />
+    </list>
+</litepal>
