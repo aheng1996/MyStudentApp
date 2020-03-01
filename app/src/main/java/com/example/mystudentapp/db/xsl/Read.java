@@ -43,6 +43,7 @@ public class Read {
             int i = 0;
             for (int rowIndex = 1; rowIndex < 100; rowIndex++) {
                 HSSFRow row = st.getRow(rowIndex);
+                Log.e(">>>>>>>>>>>>>", "student: "+getItem(row, 0) );
                 if (getItem(row, 0).length() > 5) {
                     Student student = new Student();
                     student.setName(getItem(row, 1));
@@ -61,7 +62,7 @@ public class Read {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        LitePal.deleteAll(Student.class);
+        LitePal.deleteAllAsync(Student.class);
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {

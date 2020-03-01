@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -72,6 +73,9 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
         }
         Uri uri = data.getData(); // 获取用户选择文件的URI
         String path = getRealPathFromURI(uri);
+        if (path == null) {
+            path = uri.getPath();
+        }
         if (read == null) {
             read = new Read(this);
         }

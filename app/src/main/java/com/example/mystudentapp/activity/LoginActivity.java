@@ -5,12 +5,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
 import com.example.mystudentapp.bean.User;
 import com.example.mystudentapp.db.bean.Student;
 import com.example.mystudentapp.db.bean.Teacher;
+import com.example.mystudentapp.db.ctrl.ChengjiCtrl;
 import com.example.mystudentapp.db.ctrl.LoginCtrl;
 import com.example.mystudentapp.db.ctrl.StudentCtrl;
 import com.example.mystudentapp.utils.PermissionUtil;
@@ -51,7 +53,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void test() {
-        List<Student> user = StudentCtrl.selectAll();
+        List user = ChengjiCtrl.select();
 //        int p = StudentCtrl.delete();
 //        Log.e(">>>>>>>>>>", "test: " + p);
         Log.e(">>>>>>>>>>", "test11: " + user.size());
@@ -66,6 +68,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             } else {
                 tvLogin.setText(user.getName());
             }
+        }else {
+            showToast("用户名或密码错误！");
         }
 //        goToActivity(HomeActivity.class);
 
