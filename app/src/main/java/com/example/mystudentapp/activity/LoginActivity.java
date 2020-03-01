@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
+import com.example.mystudentapp.bean.User;
 import com.example.mystudentapp.db.ctrl.LoginCtrl;
 import com.example.mystudentapp.db.xsl.Read;
 import com.example.mystudentapp.utils.PermissionUtil;
@@ -51,40 +52,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
-    private void test() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("*/*");
-        this.startActivityForResult(intent, 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (data == null) {
-            // 用户未选择任何文件，直接返回
-            return;
-        }
-        Uri uri = data.getData(); // 获取用户选择文件的URI
-        String path = getRealPathFromURI(uri);
-        etUserName.setText(path);
-        new Read().xuexi(path);
-    }
-
-    public String getRealPathFromURI(Uri contentUri) {
-        String res = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-        if (null != cursor && cursor.moveToFirst()) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
-            cursor.close();
-        }
-        return res;
-    }
 
     private void login() {
-        tvLogin.setText(LoginCtrl.login(etUserName.getText().toString(), etPassWord.getText().toString()).getName());
+        User user = LoginCtrl.login(etUserName.getText().toString(), etPassWord.getText().toString());
+        if (user != null) {
+            if (user.getType() == 1) {
+                goToActivity(AdminActivity.class);
+            } else {
+                tvLogin.setText(user.getName());
+            }
+        }
 //        goToActivity(HomeActivity.class);
 
     }

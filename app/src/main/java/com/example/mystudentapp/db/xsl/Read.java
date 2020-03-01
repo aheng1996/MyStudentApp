@@ -23,7 +23,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Read {
-    public void student(String  path) {
+    public interface SaveBack {
+        void onSuccess(String msg);
+    }
+
+    private SaveBack saveBack;
+
+    public Read(SaveBack saveBack) {
+        this.saveBack = saveBack;
+    }
+
+    public void student(String path) {
         List<Student> list = new ArrayList<>();
         try {
             File file = new File(path);
@@ -55,11 +65,13 @@ public class Read {
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {
+                saveBack.onSuccess("学生表导入成功");
                 Log.e(">>>>>", "student" + success);
             }
         });
     }
-    public void teacher(String  path) {
+
+    public void teacher(String path) {
         List<Teacher> list = new ArrayList<>();
         try {
             File file = new File(path);
@@ -85,11 +97,13 @@ public class Read {
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {
+                saveBack.onSuccess("教师表导入成功");
                 Log.e(">>>>>", "teacher" + success);
             }
         });
     }
-    public void TiCe(String  path) {
+
+    public void TiCe(String path) {
         List<TiCe> list = new ArrayList<>();
         try {
             File file = new File(path);
@@ -115,11 +129,13 @@ public class Read {
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {
+                saveBack.onSuccess("体测表导入成功");
                 Log.e(">>>>>", "tice" + success);
             }
         });
     }
-    public void xuexi(String  path) {
+
+    public void xuexi(String path) {
         List<ChengjiBiao> list = new ArrayList<>();
         try {
             File file = new File(path);
@@ -145,10 +161,12 @@ public class Read {
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {
+                saveBack.onSuccess("学习表导入成功");
                 Log.e(">>>>>", "xuexi" + success);
             }
         });
     }
+
     private HSSFSheet getSheet(int p, BufferedInputStream in) throws IOException {
         POIFSFileSystem fs = new POIFSFileSystem(in);
         HSSFWorkbook wb = new HSSFWorkbook(fs);
