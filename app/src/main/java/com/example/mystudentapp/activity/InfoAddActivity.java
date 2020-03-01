@@ -124,6 +124,7 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
         caiLiaoBiao.setPath(imagePath);
         caiLiaoBiao.setXuehao(user.getBianHao());
         CaiLiaoCtrl.save(caiLiaoBiao);
+
     }
 
     private String getImagePath(Uri uri, String selection) {
