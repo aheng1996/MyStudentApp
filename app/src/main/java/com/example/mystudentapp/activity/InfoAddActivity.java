@@ -117,6 +117,7 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
             // 如果是file类型的Uri，直接获取图片路径即可
             imagePath = uri.getPath();
         }
+
         // 根据图片路径显示图片
         iv_cailiao.setImageURI(uri);
         path = imagePath;
