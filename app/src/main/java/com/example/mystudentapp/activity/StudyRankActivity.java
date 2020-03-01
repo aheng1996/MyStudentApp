@@ -37,8 +37,6 @@ public class StudyRankActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void initData() {
-        list=new ArrayList<>();
-
        list= ChengjiCtrl.select();
        adapter.setList(list);
 
