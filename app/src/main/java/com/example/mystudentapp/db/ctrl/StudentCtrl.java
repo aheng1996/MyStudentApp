@@ -11,15 +11,18 @@ public class StudentCtrl {
     /**
      * 小组
      * 教师
+     *
      * @return
      */
     public static List<Student> selectAll() {
         return LitePal.where("1=1").find(Student.class);
     }
-    public static void delete() {
-        LitePal.deleteAllAsync(Student.class, "1=1");
+
+    public static int delete() {
+        return LitePal.deleteAll(Student.class);
     }
+
     public static List<Student> selectOther(String xueHao) {
-        return LitePal.where("xueHao!=?",xueHao).find(Student.class);
+        return LitePal.where("xueHao!=?", xueHao).find(Student.class);
     }
 }

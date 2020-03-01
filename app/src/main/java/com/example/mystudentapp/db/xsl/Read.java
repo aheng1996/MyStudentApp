@@ -61,7 +61,7 @@ public class Read {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        LitePal.deleteAllAsync(Student.class, "1=1");
+        LitePal.deleteAll(Student.class);
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {
@@ -93,7 +93,7 @@ public class Read {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        LitePal.deleteAllAsync(Teacher.class, "1=1");
+        LitePal.deleteAll(Teacher.class);
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {
@@ -125,7 +125,7 @@ public class Read {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        LitePal.deleteAllAsync(TiCe.class, "1=1");
+        LitePal.deleteAll(TiCe.class);
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {
@@ -157,7 +157,7 @@ public class Read {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        LitePal.deleteAllAsync(ChengjiBiao.class, "1=1");
+        LitePal.deleteAll(ChengjiBiao.class);
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {

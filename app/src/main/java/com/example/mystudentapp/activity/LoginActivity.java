@@ -43,8 +43,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
-                test();
-//                login();
+//                test();
+                login();
                 break;
 
         }
@@ -52,8 +52,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void test() {
         List<Student> user = StudentCtrl.selectAll();
-//        StudentCtrl.delete();
-        Log.e(">>>>>>>>>>", "test: " + user.size());
+//        int p = StudentCtrl.delete();
+//        Log.e(">>>>>>>>>>", "test: " + p);
+        Log.e(">>>>>>>>>>", "test11: " + user.size());
     }
 
 
