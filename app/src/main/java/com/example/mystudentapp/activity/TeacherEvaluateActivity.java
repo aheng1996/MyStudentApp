@@ -34,7 +34,6 @@ public class TeacherEvaluateActivity extends BaseActivity implements View.OnClic
         setContentView(R.layout.activity_teacher_evaluate);
         user= BaseMeassage.INSTANCE.getUser();
         initView();
-        initData();
         initListener();
     }
     private void initData() {
@@ -48,7 +47,12 @@ public class TeacherEvaluateActivity extends BaseActivity implements View.OnClic
         ivBack.setOnClickListener(this);
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
 
+    }
     private void initView() {
         ivBack=findViewById(R.id.iv_back);
         lvStudent=findViewById(R.id.lv_student);

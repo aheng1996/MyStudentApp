@@ -36,13 +36,13 @@ public class StudentChildActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_student_child);
         id = getIntent().getStringExtra("id");
         name = getIntent().getStringExtra("name");
-        xuehao = getIntent().getStringExtra("xuehao");
+        xuehao = getIntent().getStringExtra("xueHao");
         myXuehao=getIntent().getStringExtra("myXueHao");
-
         initView();
         initListener();
 
     }
+
 
     private void initListener() {
         ivBack.setOnClickListener(this);

@@ -40,10 +40,16 @@ public class StudentEvaluateActivity extends BaseActivity implements View.OnClic
         user= BaseMeassage.INSTANCE.getUser();
 
         initView();
-        initData();
+
         initListener();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
+
+    }
     private void initData() {
 
         list=new ArrayList<>();

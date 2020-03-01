@@ -32,7 +32,6 @@ public class GroupEvaluateActivity extends BaseActivity implements View.OnClickL
         setContentView(R.layout.activity_group_evaluate);
         user= BaseMeassage.INSTANCE.getUser();
         initView();
-        initData();
         initListener();
     }
     private void initData() {
@@ -40,6 +39,12 @@ public class GroupEvaluateActivity extends BaseActivity implements View.OnClickL
         list=new ArrayList<>();
         list= XiaoZuCtrl.selectOther(user.getBianHao());
         adapter.setList(list);
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
 
     }
     private void initListener() {
