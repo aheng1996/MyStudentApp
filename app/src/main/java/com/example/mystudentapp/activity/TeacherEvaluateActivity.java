@@ -2,8 +2,10 @@ package com.example.mystudentapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -18,7 +20,7 @@ import com.example.mystudentapp.db.ctrl.TeacherPingJiaCtrl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherEvaluateActivity extends BaseActivity implements View.OnClickListener {
+public class TeacherEvaluateActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     //教师评价界面
 
     private ImageView ivBack;
@@ -45,7 +47,7 @@ public class TeacherEvaluateActivity extends BaseActivity implements View.OnClic
     }
     private void initListener() {
         ivBack.setOnClickListener(this);
-
+        lvStudent.setOnItemClickListener(this);
     }
     @Override
     protected void onResume() {
@@ -67,6 +69,20 @@ public class TeacherEvaluateActivity extends BaseActivity implements View.OnClic
                 onBackPressed();
                 break;
         }
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        //走逻辑跳转，进入评价界面
+        //跳列表详情
+        Intent intent = new Intent(this, TeacherChildActivity.class);
+        intent.putExtra("id", list.get(i).getId()+"");
+        intent.putExtra("name",list.get(i).getName());
+        intent.putExtra("xueHao",list.get(i).getXueHao());
+        intent.putExtra("myXueHao",user.getBianHao());
+        startActivity(intent);
 
     }
 }
