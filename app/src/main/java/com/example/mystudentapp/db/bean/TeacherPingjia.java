@@ -4,12 +4,21 @@ import org.litepal.crud.LitePalSupport;
 
 public class TeacherPingjia extends LitePalSupport {
     private int id;
+    private String pingJiaRen;
     private String xuehao;
     private double jiBenFen;
     private double yuanShi;
     private double bianXian;
     private double zongFen;
     private int number;
+
+    public String getPingJiaRen() {
+        return pingJiaRen;
+    }
+
+    public void setPingJiaRen(String pingJiaRen) {
+        this.pingJiaRen = pingJiaRen;
+    }
 
     public double getZongFen() {
         return zongFen;

@@ -9,6 +9,7 @@ import java.util.List;
 
 public class StudentCtrl {
     /**
+     * 所有人
      * 小组
      * 教师
      *
@@ -18,11 +19,4 @@ public class StudentCtrl {
         return LitePal.where("1=1").find(Student.class);
     }
 
-    public static int delete() {
-        return LitePal.deleteAll(Student.class);
-    }
-
-    public static List<Student> selectOther(String xueHao) {
-        return LitePal.where("xueHao!=?", xueHao).find(Student.class);
-    }
 }

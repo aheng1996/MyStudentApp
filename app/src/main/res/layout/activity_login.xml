@@ -61,6 +61,7 @@
             android:drawableLeft="@mipmap/name"
             android:textSize="30px"
             android:drawablePadding="15dp"
+            android:text="2014015264"
             android:background="@drawable/bg_shape_gray"
             android:layout_height="48dp">
         </EditText>
@@ -73,6 +74,7 @@
             android:inputType="textPassword"
             android:paddingLeft="5dp"
             android:drawableLeft="@mipmap/pwd"
+            android:text="123456"
             android:drawablePadding="15dp"
             android:background="@drawable/bg_shape_gray"
             android:layout_height="48dp">

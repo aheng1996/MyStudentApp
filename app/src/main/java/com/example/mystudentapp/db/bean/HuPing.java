@@ -4,6 +4,7 @@ import org.litepal.crud.LitePalSupport;
 
 public class HuPing extends LitePalSupport {
     private int id;
+    private String pingJiaRen;
     private String xuehao;
     private double jiBenFen;
     private double pinde;
@@ -17,6 +18,14 @@ public class HuPing extends LitePalSupport {
 
     public void setZongFen(double zongFen) {
         this.zongFen = zongFen;
+    }
+
+    public String getPingJiaRen() {
+        return pingJiaRen;
+    }
+
+    public void setPingJiaRen(String pingJiaRen) {
+        this.pingJiaRen = pingJiaRen;
     }
 
     public int getId() {

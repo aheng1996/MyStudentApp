@@ -11,6 +11,7 @@ import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
 import com.example.mystudentapp.base.BaseMeassage;
 import com.example.mystudentapp.bean.User;
+import com.example.mystudentapp.db.bean.ChengjiBiao;
 import com.example.mystudentapp.db.bean.Student;
 import com.example.mystudentapp.db.bean.Teacher;
 import com.example.mystudentapp.db.ctrl.ChengjiCtrl;
@@ -73,7 +74,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 goToActivity(HomeActivity.class);
 
             }
-        }else {
+        } else {
             showToast("用户名或密码错误！");
         }
 //        goToActivity(HomeActivity.class);
