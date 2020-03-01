@@ -5,9 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.example.mystudentapp.R;
+import com.example.mystudentapp.adapter.StudentHuPinAdater;
 import com.example.mystudentapp.base.BaseActivity;
+import com.example.mystudentapp.base.BaseMeassage;
+import com.example.mystudentapp.bean.User;
+import com.example.mystudentapp.db.bean.Student;
+import com.example.mystudentapp.db.ctrl.HuPingCtrl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentEvaluateActivity extends BaseActivity implements View.OnClickListener {
     //学生互评界面
@@ -15,13 +24,30 @@ public class StudentEvaluateActivity extends BaseActivity implements View.OnClic
 
 
     private ImageView ivBack;
+    private User user;
+    private ListView lvStudent;  //除自己以为的学生列表
+    private List<Student> list;
+    private StudentHuPinAdater adapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_evaluate);
+        user= BaseMeassage.INSTANCE.getUser();
+
         initView();
+        initData();
         initListener();
+    }
+
+    private void initData() {
+
+        list=new ArrayList<>();
+        list= HuPingCtrl.selectOther(user.getBianHao());
+        adapter.setList(list);
+
     }
 
     private void initListener() {
@@ -31,8 +57,9 @@ public class StudentEvaluateActivity extends BaseActivity implements View.OnClic
 
     private void initView() {
         ivBack=findViewById(R.id.iv_back);
-
-
+        lvStudent=findViewById(R.id.lv_student);
+        adapter=new StudentHuPinAdater(this);
+        lvStudent.setAdapter(adapter);
     }
 
     @Override
