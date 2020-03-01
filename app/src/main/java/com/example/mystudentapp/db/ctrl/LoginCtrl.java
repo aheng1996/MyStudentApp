@@ -12,7 +12,7 @@ public class LoginCtrl {
      * @param pass
      * @return 0 用户名或密码错误
      */
-    public User login(String name, String pass) {
+    public static User login(String name, String pass) {
         if (name == null || name.length() < 1) {
             return null;
         }
@@ -35,7 +35,7 @@ public class LoginCtrl {
                 return user;
             }
         } else {
-            Student userBean = LitePal.where("zhanghao=? and mima= ?", name, pass).findFirst(Student.class);
+            Student userBean = LitePal.where("xueHao= ? and mima= ?", name, pass).findFirst(Student.class);
             if (userBean == null) {
                 return null;
             } else {
