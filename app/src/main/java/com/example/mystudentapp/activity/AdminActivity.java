@@ -21,6 +21,11 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        findViewById(R.id.iv_back).setOnClickListener(this);
+        findViewById(R.id.student).setOnClickListener(this);
+        findViewById(R.id.teacher).setOnClickListener(this);
+        findViewById(R.id.tice).setOnClickListener(this);
+        findViewById(R.id.xuexi).setOnClickListener(this);
     }
 
     private int type = 0;
