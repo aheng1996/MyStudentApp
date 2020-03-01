@@ -15,7 +15,7 @@ public class TeacherPingJiaCtrl {
      * @return
      */
     public static List<Student> selectOther(String xueHao) {
-        List<Student> list = LitePal.where("xueHao!=?", xueHao).find(Student.class);
+        List<Student> list = LitePal.where("1=1").find(Student.class);
         List<TeacherPingjia> listHuPing = LitePal.where("pingJiaRen = ? ", xueHao).find(TeacherPingjia.class);
         b:
         for (int i = 0; i < list.size(); i++) {
