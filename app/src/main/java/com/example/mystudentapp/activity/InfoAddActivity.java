@@ -13,14 +13,21 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
 import com.example.mystudentapp.base.BaseMeassage;
 import com.example.mystudentapp.bean.User;
 import com.example.mystudentapp.db.bean.CaiLiaoBiao;
 import com.example.mystudentapp.db.ctrl.CaiLiaoCtrl;
+import com.jelly.mango.ImageSelectListener;
+import com.jelly.mango.Mango;
+import com.jelly.mango.MultiplexImage;
 
-public class InfoAddActivity extends BaseActivity implements View.OnClickListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class InfoAddActivity extends BaseActivity implements View.OnClickListener, ImageSelectListener {
     //材料补充界面
 
     private ImageView ivBack;
@@ -39,7 +46,7 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
         initListener();
         path = CaiLiaoCtrl.getPicPath(user.getBianHao());
         if (path != null) {
-
+            Glide.with(this).load(path).into(iv_cailiao);
         }
     }
 
@@ -119,8 +126,8 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
         }
 
         // 根据图片路径显示图片
-        iv_cailiao.setImageURI(uri);
         path = imagePath;
+        Glide.with(this).load(path).into(iv_cailiao);
         CaiLiaoBiao caiLiaoBiao = new CaiLiaoBiao();
         caiLiaoBiao.setPath(imagePath);
         caiLiaoBiao.setXuehao(user.getBianHao());
@@ -141,4 +148,8 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
         return path;
     }
 
+    @Override
+    public void select(int index) {
+
+    }
 }

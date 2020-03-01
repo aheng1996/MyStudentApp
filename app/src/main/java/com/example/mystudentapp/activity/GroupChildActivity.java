@@ -8,24 +8,27 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
 import com.example.mystudentapp.db.bean.XiaoZu;
+import com.example.mystudentapp.db.ctrl.CaiLiaoCtrl;
 import com.example.mystudentapp.db.ctrl.XiaoZuCtrl;
 
 public class GroupChildActivity extends BaseActivity implements View.OnClickListener {
     //小组互评子页面
 
-    private String id,name,xuehao;  //id，name，xuehao，这三个字符串是被评价人的id，name，xuehao
+    private String id, name, xuehao;  //id，name，xuehao，这三个字符串是被评价人的id，name，xuehao
 
     private String myXuehao; //这个myXuehao 字符串是评价人的学号；
-    private TextView tvTitle,tvSave;
+    private TextView tvTitle, tvSave;
 
     private ImageView ivBack;
+    private ImageView iv_cailiao;
     private XiaoZu xiaozu;
 
 
-    private EditText etJiangli,etJiBen,etNengli;
+    private EditText etJiangli, etJiBen, etNengli;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +38,14 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
         id = getIntent().getStringExtra("id");
         name = getIntent().getStringExtra("name");
         xuehao = getIntent().getStringExtra("xueHao");
-        myXuehao=getIntent().getStringExtra("myXueHao");
+        myXuehao = getIntent().getStringExtra("myXueHao");
 
         initView();
         initListener();
+        String path = CaiLiaoCtrl.getPicPath(xuehao);
+        if (path != null) {
+            Glide.with(this).load(path).into(iv_cailiao);
+        }
     }
 
     private void initListener() {
@@ -48,21 +55,22 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
     }
 
     private void initView() {
-        tvTitle=findViewById(R.id.tv_title);
-        tvTitle.setText("评价"+name);
+        tvTitle = findViewById(R.id.tv_title);
+        iv_cailiao = findViewById(R.id.iv_cailiao);
+        tvTitle.setText("评价" + name);
 
-        ivBack=findViewById(R.id.iv_back);
-        tvSave=findViewById(R.id.tv_save);
-        etJiangli=findViewById(R.id.et_jiangli);
-        etJiBen=findViewById(R.id.et_jiben);
-        etNengli=findViewById(R.id.et_nengli);
+        ivBack = findViewById(R.id.iv_back);
+        tvSave = findViewById(R.id.tv_save);
+        etJiangli = findViewById(R.id.et_jiangli);
+        etJiBen = findViewById(R.id.et_jiben);
+        etNengli = findViewById(R.id.et_nengli);
 
     }
 
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.iv_back:
                 onBackPressed();
                 break;
@@ -75,7 +83,7 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
     }
 
     private void save() {
-       xiaozu=new XiaoZu();
+        xiaozu = new XiaoZu();
         //传进去3个分 ，被评价人的学号.我的学号
         xiaozu.setJianglifen(Double.parseDouble(etJiangli.getText().toString()));
         xiaozu.setJiBenFen(Double.parseDouble(etJiBen.getText().toString()));

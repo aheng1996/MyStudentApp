@@ -11,7 +11,6 @@ public class GongGaoCtrl {
     public static List<GongGao> select() {
         return LitePal.where("1=1").find(GongGao.class);
     }
-
     public static void add(GongGao gongGao) {
         gongGao.setId(0);
         gongGao.save();

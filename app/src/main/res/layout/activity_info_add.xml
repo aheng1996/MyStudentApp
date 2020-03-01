@@ -91,6 +91,7 @@
         <ImageView
             android:id="@+id/iv_cailiao"
             android:layout_width="match_parent"
+            android:src="@mipmap/none"
             android:layout_height="160dp" />
 
 

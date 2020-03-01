@@ -132,7 +132,8 @@
 
         </LinearLayout>
         <ImageView
-            android:background="@mipmap/none"
+            android:id="@+id/iv_cailiao"
+            android:src="@mipmap/none"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
 
