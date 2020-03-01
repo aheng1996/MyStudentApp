@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
 
+
 public class ChangePasswordActivity extends BaseActivity implements View.OnClickListener {
 
     //推送测试
