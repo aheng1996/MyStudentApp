@@ -15,6 +15,8 @@ import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
+import com.example.mystudentapp.base.BaseMeassage;
+import com.example.mystudentapp.bean.User;
 import com.example.mystudentapp.fragment.HomeFragment;
 import com.example.mystudentapp.fragment.MineFragment;
 import com.example.mystudentapp.fragment.ResultFragment;
@@ -29,11 +31,15 @@ public class HomeActivity extends BaseActivity {
     private BottomBarLayout mBottomBarLayout;
     private RotateAnimation mRotateAnimation;
     private Handler mHandler = new Handler();
+    private User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        user= BaseMeassage.INSTANCE.getUser();
+        showToast(user.getName()+"你好");
         initView();
         initData();
         initListener();

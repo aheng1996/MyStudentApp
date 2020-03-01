@@ -27,6 +27,7 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
         findViewById(R.id.teacher).setOnClickListener(this);
         findViewById(R.id.tice).setOnClickListener(this);
         findViewById(R.id.xuexi).setOnClickListener(this);
+        findViewById(R.id.iv_back).setOnClickListener(this);
     }
 
     private int type = 0;
@@ -35,6 +36,7 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_back:
+                onBackPressed();
                 break;
             case R.id.student:
                 type = 0;

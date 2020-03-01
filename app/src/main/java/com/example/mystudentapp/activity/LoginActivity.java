@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
+import com.example.mystudentapp.base.BaseMeassage;
 import com.example.mystudentapp.bean.User;
 import com.example.mystudentapp.db.bean.Student;
 import com.example.mystudentapp.db.bean.Teacher;
@@ -66,7 +67,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             if (user.getType() == 1) {
                 goToActivity(AdminActivity.class);
             } else {
-                tvLogin.setText(user.getName());
+//                tvLogin.setText(user.getName());\
+                BaseMeassage.INSTANCE.setUser(user);
+                finish();
+                goToActivity(HomeActivity.class);
+
             }
         }else {
             showToast("用户名或密码错误！");
