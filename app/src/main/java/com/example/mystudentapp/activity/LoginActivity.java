@@ -1,13 +1,7 @@
 package com.example.mystudentapp.activity;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,9 +9,13 @@ import android.widget.TextView;
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
 import com.example.mystudentapp.bean.User;
+import com.example.mystudentapp.db.bean.Student;
+import com.example.mystudentapp.db.bean.Teacher;
 import com.example.mystudentapp.db.ctrl.LoginCtrl;
-import com.example.mystudentapp.db.xsl.Read;
+import com.example.mystudentapp.db.ctrl.StudentCtrl;
 import com.example.mystudentapp.utils.PermissionUtil;
+
+import java.util.List;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
@@ -45,11 +43,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
-//                test();
-                login();
+                test();
+//                login();
                 break;
 
         }
+    }
+
+    private void test() {
+        List<Student> user = StudentCtrl.selectAll();
+//        StudentCtrl.delete();
+        Log.e(">>>>>>>>>>", "test: " + user.size());
     }
 
 

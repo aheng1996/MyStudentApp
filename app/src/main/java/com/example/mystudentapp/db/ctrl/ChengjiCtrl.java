@@ -8,7 +8,7 @@ import org.litepal.LitePal;
 import java.util.List;
 
 public class ChengjiCtrl {
-    public List<ChengjiBiao> select() {
+    public static List<ChengjiBiao> select() {
         return LitePal.where("1=1").find(ChengjiBiao.class);
     }
 }

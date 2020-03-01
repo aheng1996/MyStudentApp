@@ -13,10 +13,13 @@ public class StudentCtrl {
      * 教师
      * @return
      */
-    public List<Student> selectAll() {
+    public static List<Student> selectAll() {
         return LitePal.where("1=1").find(Student.class);
     }
-    public List<Student> selectOther(String xueHao) {
-        return LitePal.where("1=1").find(Student.class);
+    public static void delete() {
+        LitePal.deleteAllAsync(Student.class, "1=1");
+    }
+    public static List<Student> selectOther(String xueHao) {
+        return LitePal.where("xueHao!=?",xueHao).find(Student.class);
     }
 }

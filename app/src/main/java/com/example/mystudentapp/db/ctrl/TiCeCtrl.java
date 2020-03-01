@@ -7,7 +7,7 @@ import org.litepal.LitePal;
 import java.util.List;
 
 public class TiCeCtrl {
-    public List<TiCe> select() {
+    public static List<TiCe> select() {
         return LitePal.where("1=1").find(TiCe.class);
     }
 }
