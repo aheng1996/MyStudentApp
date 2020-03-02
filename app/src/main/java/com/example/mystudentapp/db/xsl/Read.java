@@ -62,7 +62,7 @@ public class Read {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        LitePal.deleteAllAsync(Student.class);
+        LitePal.deleteAll(Student.class);
         LitePal.saveAllAsync(list).listen(new SaveCallback() {
             @Override
             public void onFinish(boolean success) {

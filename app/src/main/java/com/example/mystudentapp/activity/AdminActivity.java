@@ -7,12 +7,27 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
+import com.example.mystudentapp.db.bean.ZongHeCeping;
+import com.example.mystudentapp.db.ctrl.CePingJieGuoCtrl;
 import com.example.mystudentapp.db.xsl.Read;
+import com.example.mystudentapp.utils.FileUtils;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
 
 public class AdminActivity extends BaseActivity implements View.OnClickListener, Read.SaveBack {
     //管理员界面
@@ -26,6 +41,8 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
         findViewById(R.id.tice).setOnClickListener(this);
         findViewById(R.id.xuexi).setOnClickListener(this);
         findViewById(R.id.iv_back).setOnClickListener(this);
+        findViewById(R.id.tv_generation).setOnClickListener(this);
+        findViewById(R.id.tv_out).setOnClickListener(this);
         findViewById(R.id.tv_notice).setOnClickListener(this);
     }
 
@@ -53,10 +70,79 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
                 type = 3;
                 getFIle();
                 break;
+            case R.id.tv_generation:
+//                showLandingDialog("正在生成成绩");
+                CePingJieGuoCtrl.generation();
+//                hideDialog();
+                Toast.makeText(this, "生成成功", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tv_out:
+                generation();
+                break;
             case R.id.tv_notice:
                 goToActivity(NoticeActivity.class);
                 break;
         }
+    }
+
+    private void generation() {
+        List<ZongHeCeping> lk = CePingJieGuoCtrl.select();
+        HSSFWorkbook wb = new HSSFWorkbook();
+        HSSFSheet sheet = wb.createSheet("sheet1");
+        HSSFRow row = sheet.createRow(0);
+//        HSSFCellStyle style = wb.createCellStyle();
+        HSSFCell cell = row.createCell(0);
+        cell.setCellValue("学号");
+//        cell.setCellStyle(style);
+        cell = row.createCell(1);
+        cell.setCellValue("姓名");
+//        cell.setCellStyle(style);
+        cell = row.createCell(2);
+        cell.setCellValue("品行成绩(30%)");
+//        cell.setCellStyle(style);
+        cell = row.createCell(3);
+        cell.setCellValue("毕业表现(50%)");
+//        cell.setCellStyle(style);
+        cell = row.createCell(4);
+        cell.setCellValue("能力表现(20%)");
+//        cell.setCellStyle(style);
+        cell = row.createCell(5);
+        cell.setCellValue("总分");
+//        cell.setCellStyle(style);
+        cell = row.createCell(6);
+        cell.setCellValue("排名");
+//        cell.setCellStyle(style);
+        for (int i = 0; i < lk.size(); i++) {
+            //创建行
+            row = sheet.createRow(i + 1);
+            ZongHeCeping ti = lk.get(i);
+            //创建单元格并且添加数据
+            row.createCell(0).setCellValue(ti.getXuehao());
+            row.createCell(1).setCellValue(ti.getXxingming());
+            row.createCell(2).setCellValue(ti.getHuping());
+            row.createCell(3).setCellValue(ti.getLaoshi());
+            row.createCell(4).setCellValue(ti.getXiaozu());
+            row.createCell(5).setCellValue(ti.getZongfen());
+            row.createCell(6).setCellValue(ti.getPaiming());
+        }
+        try {
+            String path = FileUtils.path + File.separator + "学生成绩.xls";
+            File fileDir = new File(FileUtils.path);
+            if (!fileDir.exists()) {
+                fileDir.mkdirs();
+            }
+            File file = new File(path);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileOutputStream fout = new FileOutputStream(path);
+            wb.write(fout);
+            fout.close();
+            Toast.makeText(this, "导出成功，文件位置为/sdcard/bs/学生成绩.xls", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private Read read;

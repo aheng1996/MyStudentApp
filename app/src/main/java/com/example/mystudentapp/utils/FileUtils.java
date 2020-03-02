@@ -33,8 +33,8 @@ import java.util.List;
  * @date 2018/8/8.
  */
 public class FileUtils {
-    private static final String path = "/sdcard/bs/img/";
-    private static final String videoPath = "/sdcard/bs/video/";
+    public static final String path = "/sdcard/bs/";
+    public static final String videoPath = "/sdcard/bs/video/";
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 
     public static File getFile(String name) {

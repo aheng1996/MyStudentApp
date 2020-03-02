@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+        <TextView
+            android:id="@+id/xuehao"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:text="学号" />
+        <TextView
+            android:id="@+id/huping"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:text="品行表现" />
+        <TextView
+            android:id="@+id/laoshi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:text="毕业表现" />
+        <TextView
+            android:id="@+id/xiaozu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:textSize="11sp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="能力表现" />
+        <TextView
+            android:id="@+id/zongfen"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:textSize="11sp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="综测评分" />
+        <TextView
+            android:id="@+id/paiming"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:text="排名" />
+</LinearLayout>

@@ -47,4 +47,19 @@ public class LoginCtrl {
             }
         }
     }
+    public static void changePass(String bianHao, String pass, int type) {
+        if (type == 2) {
+            Teacher userBean = LitePal.where("zhanghao=?", bianHao).findFirst(Teacher.class);
+            if (userBean != null) {
+                userBean.setMima(pass);
+                userBean.save();
+            }
+        } else if (type == 3) {
+            Student userBean = LitePal.where("xueHao= ? ", bianHao).findFirst(Student.class);
+            if (userBean != null) {
+                userBean.setMima(pass);
+                userBean.save();
+            }
+        }
+    }
 }
