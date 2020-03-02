@@ -12,32 +12,7 @@
         android:orientation="vertical"
         android:layout_height="match_parent">
 
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:layout_marginBottom="5dp"-->
-            <!--android:background="#ffffff">-->
 
-            <!--<TextView-->
-                <!--android:id="@+id/iv_title"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:layout_marginRight="10dp"-->
-                <!--android:text="学生综合素质测评系统"-->
-                <!--android:gravity="center"-->
-               <!--&gt;-->
-
-
-            <!--</TextView>-->
-
-
-
-
-
-        <!--</RelativeLayout>-->
 
         <com.youth.banner.Banner
 
@@ -104,84 +79,27 @@
             android:orientation="vertical"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/tv_l1"
-                android:orientation="vertical"
+            <ListView
+                android:id="@+id/lv_notice"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_child1"
-                    android:layout_width="match_parent"
-                    android:text="关于推迟2020年春季开学的通知"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
 
-                </TextView>
-                <View
-                    android:layout_width="match_parent"
-                    android:background="#F2F2F2"
-                    android:layout_margin="10dp"
-                    android:layout_height="1dp">
 
-
-                </View>
-            </LinearLayout>
+            </ListView>
 
 
 
 
 
-            <LinearLayout
-                android:id="@+id/tv_l2"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_child2"
-                    android:layout_width="match_parent"
-                    android:text="关于延长2020年度河北省省级科技计划项目申报期通知"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
-
-
-                </TextView>
-                <View
-                    android:layout_width="match_parent"
-                    android:background="#F2F2F2"
-                    android:layout_margin="10dp"
-
-                    android:layout_height="1dp">
-
-
-                </View>
-            </LinearLayout>
 
 
 
 
 
-            <LinearLayout
-                android:id="@+id/tv_l3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/tv_child3"
-                    android:layout_width="match_parent"
-                    android:text="关于申报2020-2021年度河北省社会科学基金项目的通知"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_height="wrap_content">
 
 
-                </TextView>
 
-            </LinearLayout>
 
 
 

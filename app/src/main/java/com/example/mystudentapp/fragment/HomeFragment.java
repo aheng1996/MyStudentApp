@@ -1,6 +1,7 @@
 package com.example.mystudentapp.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,22 +13,28 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.activity.GroupEvaluateActivity;
 import com.example.mystudentapp.activity.InfoAddActivity;
+import com.example.mystudentapp.activity.NoticeInfoActivity;
 import com.example.mystudentapp.activity.SportsRankActivity;
 import com.example.mystudentapp.activity.StudentEvaluateActivity;
 import com.example.mystudentapp.activity.StudyRankActivity;
 import com.example.mystudentapp.activity.TeacherEvaluateActivity;
 import com.example.mystudentapp.adapter.MyAdapter;
+import com.example.mystudentapp.adapter.NoticeAdapter;
 import com.example.mystudentapp.base.BaseFragment;
 import com.example.mystudentapp.base.GlideImageLoader;
 import com.example.mystudentapp.bean.Icon;
+import com.example.mystudentapp.db.bean.GongGao;
+import com.example.mystudentapp.db.ctrl.GongGaoCtrl;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +44,7 @@ import java.util.ArrayList;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     protected String[] titles;
     private Banner banner;
@@ -47,6 +54,10 @@ public class HomeFragment extends BaseFragment {
     private Context mContext;
     private GridView grid_photo;
     private BaseAdapter iconAdapter = null;
+
+    private ListView lvNotice;
+    private List<GongGao> list;
+    private NoticeAdapter adapter;
 
 
 
@@ -101,6 +112,12 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initView(View inflate) {
+        //公告
+        lvNotice=inflate.findViewById(R.id.lv_notice);
+        adapter=new NoticeAdapter(getActivity());
+        lvNotice.setAdapter(adapter);
+        lvNotice.setOnItemClickListener(this);
+
         banner = inflate.findViewById(R.id.banner);
 
         grid_photo = (GridView) inflate.findViewById(R.id.grid_photo);
@@ -169,4 +186,30 @@ public class HomeFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        //走逻辑跳转，进入公告详情界面
+
+        Intent intent = new Intent(getActivity(), NoticeInfoActivity.class);
+        intent.putExtra("id", list.get(i).getId()+"");
+        intent.putExtra("title",list.get(i).getTitle());
+        intent.putExtra("message",list.get(i).getMessage());
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+
+    }
+    private void initData() {
+
+        list=new ArrayList<>();
+        list= GongGaoCtrl.select();
+        adapter.setList(list);
+
+    }
 }

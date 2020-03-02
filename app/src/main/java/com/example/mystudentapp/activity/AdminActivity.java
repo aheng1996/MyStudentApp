@@ -26,6 +26,7 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
         findViewById(R.id.tice).setOnClickListener(this);
         findViewById(R.id.xuexi).setOnClickListener(this);
         findViewById(R.id.iv_back).setOnClickListener(this);
+        findViewById(R.id.tv_notice).setOnClickListener(this);
     }
 
     private int type = 0;
@@ -51,6 +52,9 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
             case R.id.xuexi:
                 type = 3;
                 getFIle();
+                break;
+            case R.id.tv_notice:
+                goToActivity(NoticeActivity.class);
                 break;
         }
     }
