@@ -112,8 +112,6 @@
             android:gravity="center"
             android:layout_margin="10dp"
             android:text="测评结果生成">
-
-
         </TextView>
         <TextView
             android:id="@+id/tv_out"
