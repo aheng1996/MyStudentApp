@@ -1,10 +1,12 @@
 package com.example.mystudentapp.activity;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -13,9 +15,11 @@ import android.widget.Toast;
 
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
+import com.example.mystudentapp.base.BaseMeassage;
 import com.example.mystudentapp.db.bean.ZongHeCeping;
 import com.example.mystudentapp.db.ctrl.CePingJieGuoCtrl;
 import com.example.mystudentapp.db.xsl.Read;
+import com.example.mystudentapp.utils.FileUtil;
 import com.example.mystudentapp.utils.FileUtils;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -146,9 +150,28 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
     }
 
     private Read read;
+    private String path;
 
     private void getFIle() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            path = FileUtils.path + "/use/" + System.currentTimeMillis() + ".xls";
+//            File file1 = new File(FileUtils.path + "/use");
+//            if (!file1.exists()) {
+//                file1.mkdir();
+//            }
+//            File file = new File(path);
+//            if (!file.exists()) {
+//                try {
+//                    file.createNewFile();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            Uri uri = FileProvider.getUriForFile(this, "com.example.mystudentapp.fileprovider", file);
+//            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+//            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        }
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("*/*");
         this.startActivityForResult(intent, 1);
@@ -162,10 +185,13 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
             return;
         }
         Uri uri = data.getData(); // 获取用户选择文件的URI
-        String path = getRealPathFromURI(uri);
+//        String path = FileUtil.getFilePathByUri(this, uri);
+        String path = FileUtil.getRealFilePathFromUri(this, uri);
+        Log.e(">>>>>>>>>>>>>", "student: " + path);
         if (path == null) {
             path = uri.getPath();
         }
+
         if (read == null) {
             read = new Read(this);
         }
