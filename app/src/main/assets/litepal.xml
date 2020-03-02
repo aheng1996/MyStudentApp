@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <dbname value="ms" />
-    <version value="4" />
+    <version value="7" />
     <list>
         <mapping class="com.example.mystudentapp.db.bean.CaiLiaoBiao" />
         <mapping class="com.example.mystudentapp.db.bean.ChengjiBiao" />
@@ -12,5 +12,6 @@
         <mapping class="com.example.mystudentapp.db.bean.TiCe" />
         <mapping class="com.example.mystudentapp.db.bean.XiaoZu" />
         <mapping class="com.example.mystudentapp.db.bean.ZongHeCeping" />
+        <mapping class="com.example.mystudentapp.db.bean.GongGao" />
     </list>
 </litepal>

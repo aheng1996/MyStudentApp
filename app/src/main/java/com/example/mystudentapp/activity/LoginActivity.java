@@ -15,6 +15,7 @@ import com.example.mystudentapp.db.bean.ChengjiBiao;
 import com.example.mystudentapp.db.bean.Student;
 import com.example.mystudentapp.db.bean.Teacher;
 import com.example.mystudentapp.db.ctrl.ChengjiCtrl;
+import com.example.mystudentapp.db.ctrl.GongGaoCtrl;
 import com.example.mystudentapp.db.ctrl.LoginCtrl;
 import com.example.mystudentapp.db.ctrl.StudentCtrl;
 import com.example.mystudentapp.utils.PermissionUtil;
@@ -55,9 +56,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void test() {
-        List user = ChengjiCtrl.select();
-//        int p = StudentCtrl.delete();
-//        Log.e(">>>>>>>>>>", "test: " + p);
+        List user = GongGaoCtrl.select();
         Log.e(">>>>>>>>>>", "test11: " + user.size());
     }
 
