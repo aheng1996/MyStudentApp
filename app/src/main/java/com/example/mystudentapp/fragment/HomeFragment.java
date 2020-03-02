@@ -26,8 +26,10 @@ import com.example.mystudentapp.activity.TeacherEvaluateActivity;
 import com.example.mystudentapp.adapter.MyAdapter;
 import com.example.mystudentapp.adapter.NoticeAdapter;
 import com.example.mystudentapp.base.BaseFragment;
+import com.example.mystudentapp.base.BaseMeassage;
 import com.example.mystudentapp.base.GlideImageLoader;
 import com.example.mystudentapp.bean.Icon;
+import com.example.mystudentapp.bean.User;
 import com.example.mystudentapp.db.bean.GongGao;
 import com.example.mystudentapp.db.ctrl.GongGaoCtrl;
 import com.youth.banner.Banner;
@@ -58,9 +60,10 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     private ListView lvNotice;
     private List<GongGao> list;
     private NoticeAdapter adapter;
+    private boolean isXiaoZu; //是否小组
 
-
-
+    private User user;
+    private int type;
 
     public HomeFragment() {
 
@@ -83,6 +86,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
         View inflate = inflater.inflate(R.layout.fragment_home, container, false);
         initImage();
+        user = BaseMeassage.INSTANCE.getUser();
 
         initView(inflate);
         initBanner();
@@ -135,20 +139,50 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         grid_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                type =user.getType();   //         * 1 管理员
+//     * 2 老师
+//     * 3 学生
+
                 switch (i) {
+
+
                     case 0:
-                      gotoActivity(StudentEvaluateActivity.class);
+                        if (type==3){
+                            gotoActivity(StudentEvaluateActivity.class);
+
+                        }else {
+                            showToast("您不是学生，暂无权限");
+                        }
+
 
                         break;
                     case 1:
-                        gotoActivity(GroupEvaluateActivity.class);
+                        if (user.isXiaoZu()){
+                            gotoActivity(GroupEvaluateActivity.class);
+
+                        }else {
+                            showToast("您不是小组成员，暂无权限");
+                        }
                         break;
                     case 2:
+                        if (type==2){
+                            gotoActivity(TeacherEvaluateActivity.class);
 
-                        gotoActivity(TeacherEvaluateActivity.class);
+
+                        }else {
+                            showToast("您不是教师，暂无权限");
+                        }
+
                         break;
                     case 3:
-                        gotoActivity(InfoAddActivity.class);
+                        if (type==3){
+                            gotoActivity(InfoAddActivity.class);
+
+                        }else {
+                            showToast("您不是学生，暂无权限");
+                        }
+
+
 
                         break;
                     case 4:
