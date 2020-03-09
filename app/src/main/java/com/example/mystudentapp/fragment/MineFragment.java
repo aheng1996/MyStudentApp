@@ -16,12 +16,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.activity.ChangePasswordActivity;
 import com.example.mystudentapp.activity.LoginActivity;
 import com.example.mystudentapp.base.ActivityManager;
 import com.example.mystudentapp.base.BaseFragment;
+import com.example.mystudentapp.base.BaseMeassage;
+import com.example.mystudentapp.bean.User;
+import com.example.mystudentapp.db.bean.Teacher;
 import com.flyco.animation.BaseAnimatorSet;
 import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.listener.OnOperItemClickL;
@@ -37,6 +41,11 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private BaseAnimatorSet mBasIn;
     private BaseAnimatorSet mBasOut;
     private ImageView ivHeadPic;
+
+    private TextView tvName;
+    private TextView tvBianhao;
+    private User user;
+
 
 
     public MineFragment() {
@@ -60,6 +69,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_mine, container, false);
+        user = BaseMeassage.INSTANCE.getUser();
 
         initView(inflate);
 
@@ -77,6 +87,11 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         llChangPwd=inflate.findViewById(R.id.ll_chang_pwd);
         llGoOut=inflate.findViewById(R.id.ll_go_out);
         ivHeadPic=inflate.findViewById(R.id.iv_head_pic);
+
+        tvBianhao=inflate.findViewById(R.id.tv_user_name);
+        tvName=inflate.findViewById(R.id.tv_name);
+        tvBianhao.setText("账号："+user.getBianHao());
+        tvName.setText(user.getName());
     }
 
 

@@ -89,6 +89,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
             LoginCtrl.changePass(BaseMeassage.INSTANCE.getUser().getBianHao(), newPwd1, user.getType());
             showToast("修改密码成功");
             finish();
+            goToActivity(LoginActivity.class);
         } else {
             tvError.setText("旧密码输入错误");
         }

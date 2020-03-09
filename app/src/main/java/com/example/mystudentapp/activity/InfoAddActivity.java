@@ -31,7 +31,7 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
     //材料补充界面
 
     private ImageView ivBack;
-    private ImageView iv_cailiao;
+    private ImageView iv_cailiao1,iv_cailiao2,iv_cailiao3;  //文体，能力，品德
     private TextView tv_xuehao;
     private TextView tv_name;
     private User user;
@@ -46,7 +46,7 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
         initListener();
         path = CaiLiaoCtrl.getPicPath(user.getBianHao());
         if (path != null) {
-            Glide.with(this).load(path).into(iv_cailiao);
+            Glide.with(this).load(path).into(iv_cailiao1);  // 这做过了修改
         }
     }
 
@@ -59,7 +59,9 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
     private void initView() {
         ivBack = findViewById(R.id.iv_back);
         tv_xuehao = findViewById(R.id.tv_xuehao);
-        iv_cailiao = findViewById(R.id.iv_cailiao);
+        iv_cailiao1 = findViewById(R.id.iv_cailiao1);
+        iv_cailiao2 = findViewById(R.id.iv_cailiao2);
+        iv_cailiao3 = findViewById(R.id.iv_cailiao3);
         tv_name = findViewById(R.id.tv_name);
         tv_xuehao.setText(user.getBianHao());
         tv_name.setText(user.getName());
@@ -127,7 +129,7 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
 
         // 根据图片路径显示图片
         path = imagePath;
-        Glide.with(this).load(path).into(iv_cailiao);
+        Glide.with(this).load(path).into(iv_cailiao1);
         CaiLiaoBiao caiLiaoBiao = new CaiLiaoBiao();
         caiLiaoBiao.setPath(imagePath);
         caiLiaoBiao.setXuehao(user.getBianHao());
