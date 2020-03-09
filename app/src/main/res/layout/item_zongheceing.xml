@@ -40,6 +40,15 @@
             android:gravity="center"
             android:text="能力表现" />
         <TextView
+            android:id="@+id/wenti"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:textSize="11sp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="文体分" />
+        <TextView
             android:id="@+id/zongfen"
             android:layout_width="0dp"
             android:layout_height="match_parent"
