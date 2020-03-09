@@ -11,4 +11,7 @@ public class ChengjiCtrl {
     public static List<ChengjiBiao> select() {
         return LitePal.where("1=1").find(ChengjiBiao.class);
     }
+    public static ChengjiBiao selectOne(String xueHao) {
+        return LitePal.where("xueHao=?",xueHao).findFirst(ChengjiBiao.class);
+    }
 }

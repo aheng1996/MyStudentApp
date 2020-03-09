@@ -2,14 +2,17 @@ package com.example.mystudentapp.db.ctrl;
 
 import android.util.Log;
 
+import com.example.mystudentapp.db.bean.ChengjiBiao;
 import com.example.mystudentapp.db.bean.HuPing;
 import com.example.mystudentapp.db.bean.Student;
 import com.example.mystudentapp.db.bean.TeacherPingjia;
 import com.example.mystudentapp.db.bean.XiaoZu;
 import com.example.mystudentapp.db.bean.ZongHeCeping;
 
+
 import org.litepal.LitePal;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,23 +33,38 @@ public class CePingJieGuoCtrl {
                 List<HuPing> huPingsList = LitePal.where("xuehao = ?", xueHao).find(HuPing.class);
                 double number = 0;
                 for (int j = 0; j < huPingsList.size(); j++) {
-                    number = number + huPingsList.get(j).getJiBenFen() + huPingsList.get(j).getJiangli() + huPingsList.get(j).getPinde();
+                    if (huPingsList.get(j).getJiBenFen() > 0) {
+                        number = number + huPingsList.get(j).getJiBenFen();
+                    }
+                    if (+huPingsList.get(j).getJiangli() > 0) {
+                        number = number + +huPingsList.get(j).getJiangli();
+                    }
+                    if (huPingsList.get(j).getPinde() > 0) {
+                        number = number + +huPingsList.get(j).getPinde();
+                    }
                 }
-                if (huPingsList.size()>0){
+                if (huPingsList.size() > 0) {
                     number = number / huPingsList.size();
                 }
-                zongHeCeping.setHuping(number);
+                number = ((int) (number * 100)) * 0.01;
+                zongHeCeping.setNengli(getDouble(number));
             }
             {
                 List<XiaoZu> huPingsList = LitePal.where("xuehao = ?", xueHao).find(XiaoZu.class);
-                double number = 0;
+                double number1 = 0;
+                double number2 = 0;
                 for (int j = 0; j < huPingsList.size(); j++) {
-                    number = number + huPingsList.get(j).getJiBenFen() + huPingsList.get(j).getJianglifen() + huPingsList.get(j).getNenglifen();
+                    if (huPingsList.get(j).getJiBenFen() > 0) {
+                        number1 = number1 + huPingsList.get(j).getJiBenFen();
+                    }
+                    if (huPingsList.get(j).getNenglifen() > 0) {
+                        number2 = number2 + huPingsList.get(j).getNenglifen();
+                    }
                 }
-                if (huPingsList.size()>0){
-                    number = number / huPingsList.size();
-                }
-                zongHeCeping.setXiaozu(number);
+                number1 = ((int) (number1 * 100)) * 0.01;
+                number2 = ((int) (number2 * 100)) * 0.01;
+                zongHeCeping.setWenti(getDouble(number1));
+                zongHeCeping.setPinde(getDouble(number2));
             }
             {
                 List<TeacherPingjia> huPingsList = LitePal.where("xuehao = ?", xueHao).find(TeacherPingjia.class);
@@ -54,12 +72,19 @@ public class CePingJieGuoCtrl {
                 for (int j = 0; j < huPingsList.size(); j++) {
                     number = number + huPingsList.get(j).getJiBenFen() + huPingsList.get(j).getYuanShi() + huPingsList.get(j).getBianXian();
                 }
-                if (huPingsList.size()>0){
+                if (huPingsList.size() > 0) {
                     number = number / huPingsList.size();
                 }
-                zongHeCeping.setLaoshi(number);
+                List<ChengjiBiao> chengjiBiaoList = LitePal.where("xuehao=?", xueHao).find(ChengjiBiao.class);
+                if (chengjiBiaoList.size() > 0) {
+                    number = number * 0.2 + Double.parseDouble(chengjiBiaoList.get(0).getFenshu()) * 0.8;
+                }
+                number = ((int) (number * 100)) * 0.01;
+                zongHeCeping.setXueye(getDouble(number));
             }
-            zongHeCeping.setZongfen(zongHeCeping.getHuping() * 0.30 + zongHeCeping.getXiaozu() * 0.20 + zongHeCeping.getLaoshi() * 0.50);
+            double number = zongHeCeping.getXueye() * 0.50 + zongHeCeping.getNengli() * 0.20 + zongHeCeping.getWenti() * 0.10 + zongHeCeping.getPinde() * 0.20;
+            number = ((int) (number * 100)) * 0.01;
+            zongHeCeping.setZongfen(getDouble(number));
             myLIst.add(zongHeCeping);
         }
         LitePal.saveAll(myLIst);
@@ -85,5 +110,11 @@ public class CePingJieGuoCtrl {
     public static List<ZongHeCeping> select() {
         //设置分数
         return LitePal.where("1=1 ORDER BY zongfen desc").find(ZongHeCeping.class);
+    }
+
+    private static double getDouble(double b) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        String str = df.format(b);
+        return Double.parseDouble(str);
     }
 }

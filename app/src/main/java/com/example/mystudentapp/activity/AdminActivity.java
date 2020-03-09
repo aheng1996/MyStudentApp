@@ -102,18 +102,20 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
         cell.setCellValue("姓名");
 //        cell.setCellStyle(style);
         cell = row.createCell(2);
-        cell.setCellValue("品行成绩(30%)");
+        cell.setCellValue("学业成绩(50%)");
 //        cell.setCellStyle(style);
         cell = row.createCell(3);
-        cell.setCellValue("毕业表现(50%)");
-//        cell.setCellStyle(style);
-        cell = row.createCell(4);
         cell.setCellValue("能力表现(20%)");
 //        cell.setCellStyle(style);
+        cell = row.createCell(4);
+        cell.setCellValue("文体表现(10%)");
+//        cell.setCellStyle(style);
         cell = row.createCell(5);
-        cell.setCellValue("总分");
+        cell.setCellValue("品德表现(20%)");
 //        cell.setCellStyle(style);
         cell = row.createCell(6);
+        cell.setCellValue("总分");
+        cell = row.createCell(7);
         cell.setCellValue("排名");
 //        cell.setCellStyle(style);
         for (int i = 0; i < lk.size(); i++) {
@@ -123,11 +125,12 @@ public class AdminActivity extends BaseActivity implements View.OnClickListener,
             //创建单元格并且添加数据
             row.createCell(0).setCellValue(ti.getXuehao());
             row.createCell(1).setCellValue(ti.getXxingming());
-            row.createCell(2).setCellValue(ti.getHuping());
-            row.createCell(3).setCellValue(ti.getLaoshi());
-            row.createCell(4).setCellValue(ti.getXiaozu());
-            row.createCell(5).setCellValue(ti.getZongfen());
-            row.createCell(6).setCellValue(ti.getPaiming());
+            row.createCell(2).setCellValue(ti.getXueye());
+            row.createCell(3).setCellValue(ti.getNengli());
+            row.createCell(4).setCellValue(ti.getWenti());
+            row.createCell(5).setCellValue(ti.getPinde());
+            row.createCell(6).setCellValue(ti.getZongfen());
+            row.createCell(7).setCellValue(ti.getPaiming());
         }
         try {
             String path = FileUtils.path + File.separator + "学生成绩.xls";

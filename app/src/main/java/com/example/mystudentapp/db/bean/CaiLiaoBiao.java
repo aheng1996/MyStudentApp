@@ -5,7 +5,9 @@ import org.litepal.crud.LitePalSupport;
 public class CaiLiaoBiao extends LitePalSupport {
     private int id;
     private String xuehao;
-    private String path;
+    private String wenti;
+    private String nengli;
+    private String pinde;
     private int fenshu;
 
     public int getId() {
@@ -24,12 +26,28 @@ public class CaiLiaoBiao extends LitePalSupport {
         this.xuehao = xuehao;
     }
 
-    public String getPath() {
-        return path;
+    public String getWenti() {
+        return wenti;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setWenti(String wenti) {
+        this.wenti = wenti;
+    }
+
+    public String getNengli() {
+        return nengli;
+    }
+
+    public void setNengli(String nengli) {
+        this.nengli = nengli;
+    }
+
+    public String getPinde() {
+        return pinde;
+    }
+
+    public void setPinde(String pinde) {
+        this.pinde = pinde;
     }
 
     public int getFenshu() {

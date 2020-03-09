@@ -51,6 +51,7 @@ public class ZongHeCepingAdater extends BaseAdapter {
             viewHolder.huping=view .findViewById(R.id.huping);
             viewHolder.laoshi=view .findViewById(R.id.laoshi);
             viewHolder.xiaozu=view .findViewById(R.id.xiaozu);
+            viewHolder.wenti=view .findViewById(R.id.wenti);
             viewHolder.zongfen=view .findViewById(R.id.zongfen);
             viewHolder.paiming=view .findViewById(R.id.paiming);
 
@@ -59,9 +60,10 @@ public class ZongHeCepingAdater extends BaseAdapter {
             viewHolder = (ViewHolder) view .getTag();
         }
         viewHolder.xuehao.setText(list.get(i).getXuehao());
-        viewHolder.huping.setText(list.get(i).getHuping()+"");
-        viewHolder.laoshi.setText(list.get(i).getLaoshi()+"");
-        viewHolder.xiaozu.setText(list.get(i).getXiaozu()+"");
+        viewHolder.huping.setText(list.get(i).getXueye()+"");
+        viewHolder.laoshi.setText(list.get(i).getNengli()+"");
+        viewHolder.xiaozu.setText(list.get(i).getWenti()+"");
+        viewHolder.wenti.setText(list.get(i).getPinde()+"");
         viewHolder.zongfen.setText(list.get(i).getZongfen()+"");
         viewHolder.paiming.setText(list.get(i).getPaiming()+"");
         return view ;
@@ -77,6 +79,7 @@ public class ZongHeCepingAdater extends BaseAdapter {
         TextView huping;
         TextView laoshi;
         TextView xiaozu;
+        TextView wenti;
         TextView zongfen;
         TextView paiming;
 

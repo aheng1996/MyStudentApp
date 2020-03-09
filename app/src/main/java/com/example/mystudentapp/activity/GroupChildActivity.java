@@ -11,8 +11,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.mystudentapp.R;
 import com.example.mystudentapp.base.BaseActivity;
+import com.example.mystudentapp.db.bean.ChengjiBiao;
 import com.example.mystudentapp.db.bean.XiaoZu;
 import com.example.mystudentapp.db.ctrl.CaiLiaoCtrl;
+import com.example.mystudentapp.db.ctrl.ChengjiCtrl;
 import com.example.mystudentapp.db.ctrl.XiaoZuCtrl;
 
 public class GroupChildActivity extends BaseActivity implements View.OnClickListener {
@@ -21,10 +23,12 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
     private String id, name, xuehao;  //id，name，xuehao，这三个字符串是被评价人的id，name，xuehao
 
     private String myXuehao; //这个myXuehao 字符串是评价人的学号；
-    private TextView tvTitle, tvSave;
+    private TextView tvTitle, tvSave, tv_fenshu;
 
     private ImageView ivBack;
-    private ImageView iv_cailiao;
+    private ImageView iv_cailiao1;
+    private ImageView iv_cailiao2;
+    private ImageView iv_cailiao3;
     private XiaoZu xiaozu;
 
 
@@ -42,10 +46,23 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
 
         initView();
         initListener();
-        String path = CaiLiaoCtrl.getPicPath(xuehao);
-        if (path != null) {
-            Glide.with(this).load(path).into(iv_cailiao);
+        String path1 = CaiLiaoCtrl.getPicPath(xuehao, 0);
+        String path2 = CaiLiaoCtrl.getPicPath(xuehao, 1);
+        String path3 = CaiLiaoCtrl.getPicPath(xuehao, 2);
+        if (path1 != null) {
+            Glide.with(this).load(path1).into(iv_cailiao1);
         }
+        if (path2 != null) {
+            Glide.with(this).load(path2).into(iv_cailiao2);
+        }
+        if (path3 != null) {
+            Glide.with(this).load(path3).into(iv_cailiao3);
+        }
+        String fenshu = ChengjiCtrl.selectOne(xuehao).getFenshu();
+        if (fenshu==null){
+            fenshu="";
+        }
+        tv_fenshu.setText(fenshu);
     }
 
     private void initListener() {
@@ -56,7 +73,10 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
 
     private void initView() {
         tvTitle = findViewById(R.id.tv_title);
-        iv_cailiao = findViewById(R.id.iv_cailiao);
+        iv_cailiao1 = findViewById(R.id.iv_cailiao1);
+        iv_cailiao2 = findViewById(R.id.iv_cailiao2);
+        iv_cailiao3 = findViewById(R.id.iv_cailiao3);
+        tv_fenshu = findViewById(R.id.tv_fenshu);
         tvTitle.setText("评价" + name);
 
         ivBack = findViewById(R.id.iv_back);

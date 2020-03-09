@@ -6,9 +6,10 @@ public class ZongHeCeping extends LitePalSupport {
     private int id;
     private String xuehao;
     private String xxingming;
-    private double huping;
-    private double xiaozu;
-    private double laoshi;
+    private double xueye;
+    private double nengli;
+    private double wenti;
+    private double pinde;
     private double zongfen;
     private int paiming;
 
@@ -36,28 +37,36 @@ public class ZongHeCeping extends LitePalSupport {
         this.xxingming = xxingming;
     }
 
-    public double getHuping() {
-        return huping;
+    public double getXueye() {
+        return xueye;
     }
 
-    public void setHuping(double huping) {
-        this.huping = huping;
+    public void setXueye(double xueye) {
+        this.xueye = xueye;
     }
 
-    public double getXiaozu() {
-        return xiaozu;
+    public double getNengli() {
+        return nengli;
     }
 
-    public void setXiaozu(double xiaozu) {
-        this.xiaozu = xiaozu;
+    public void setNengli(double nengli) {
+        this.nengli = nengli;
     }
 
-    public double getLaoshi() {
-        return laoshi;
+    public double getWenti() {
+        return wenti;
     }
 
-    public void setLaoshi(double laoshi) {
-        this.laoshi = laoshi;
+    public void setWenti(double wenti) {
+        this.wenti = wenti;
+    }
+
+    public double getPinde() {
+        return pinde;
+    }
+
+    public void setPinde(double pinde) {
+        this.pinde = pinde;
     }
 
     public double getZongfen() {

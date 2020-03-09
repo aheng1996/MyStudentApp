@@ -30,21 +30,13 @@
                 android:layout_weight="1"
                 android:textSize="11sp"
                 android:gravity="center"
-                android:text="品行表现（20%）" />
+                android:text="学业成绩（50%）" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:textSize="11sp"
-                android:gravity="center"
-                android:text="毕业表现（50%）" />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:textSize="11sp"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:text="能力表现（20%）" />
             <TextView
@@ -55,6 +47,14 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="文体表现（10%）" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:textSize="11sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="品德表现（20%）" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
