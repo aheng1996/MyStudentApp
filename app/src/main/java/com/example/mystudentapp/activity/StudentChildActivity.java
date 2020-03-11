@@ -76,9 +76,9 @@ public class StudentChildActivity extends BaseActivity implements View.OnClickLi
     private void save() {
         huPing=new HuPing();
         //传进去3个分 ，被评价人的学号.我的学号
-        huPing.setJiangli(Double.parseDouble(etJiangli.getText().toString()));
+//        huPing.setJiangli(Double.parseDouble(etJiangli.getText().toString()));
         huPing.setJiBenFen(Double.parseDouble(etJiBen.getText().toString()));
-        huPing.setPinde(Double.parseDouble(etPinDe.getText().toString()));
+//        huPing.setPinde(Double.parseDouble(etPinDe.getText().toString()));
 
         //打印个学号，看看学号是否为空
 
