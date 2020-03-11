@@ -105,7 +105,7 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
     private void save() {
         xiaozu = new XiaoZu();
         //传进去3个分 ，被评价人的学号.我的学号
-        xiaozu.setJianglifen(Double.parseDouble(etJiangli.getText().toString()));
+//        xiaozu.setJianglifen(Double.parseDouble(etJiangli.getText().toString()));
         xiaozu.setJiBenFen(Double.parseDouble(etJiBen.getText().toString()));
         xiaozu.setNenglifen(Double.parseDouble(etNengli.getText().toString()));
 
