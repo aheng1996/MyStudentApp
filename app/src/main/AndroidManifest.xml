@@ -28,7 +28,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.NoticeInfoActivity"></activity>
+        <activity android:name=".activity.MutiImageSelectorActivity"></activity>
+        <activity android:name=".activity.SelectPhotoActivity" />
+        <activity android:name=".activity.NoticeInfoActivity" />
         <activity android:name=".activity.AddNoticeActivity" />
         <activity android:name=".activity.NoticeActivity" />
         <activity android:name=".activity.AdminActivity" />
@@ -52,6 +54,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.mystudentapp.fileprovider"
@@ -60,7 +63,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_path" />
-        </provider> <!-- 监听网络状态 -->
+        </provider>
     </application>
 
 </manifest>

@@ -89,14 +89,16 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
                 onBackPressed();
                 break;
             case R.id.iv_cailiao1:
-                if (path1 == null) {
-                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                    //Intent.ACTION_GET_CONTENT = "android.intent.action.GET_CONTENT"
-                    intent.setType("image/*");
-                    startActivityForResult(intent, PICK_PHOTO1); // 打开相册
-                } else {
-                    showToast("您已上传材料，请勿重复上传");
-                }
+//                if (path1 == null) {
+//                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//                    //Intent.ACTION_GET_CONTENT = "android.intent.action.GET_CONTENT"
+//                    intent.setType("image/*");
+//                    startActivityForResult(intent, PICK_PHOTO1); // 打开相册
+//                } else {
+//                    showToast("您已上传材料，请勿重复上传");
+//                }
+                goToActivity(SelectPhotoActivity.class);
+
                 break;
             case R.id.iv_cailiao2:
                 if (path2 == null) {
