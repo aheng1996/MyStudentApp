@@ -51,18 +51,31 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void onEnterAnimationComplete() {
         super.onEnterAnimationComplete();
-        path1 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 0).split(";;;")[0];
-        if (path1 != null) {
-            Glide.with(this).load(path1).into(iv_cailiao1);  // 这做过了修改
+        try {
+            path1 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 0).split(";;;")[0];
+            if (path1 != null) {
+                Glide.with(this).load(path1).into(iv_cailiao1);  // 这做过了修改
+            }
+        } catch (Exception e) {
+
         }
-        path2 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 1).split(";;;")[0];
-        if (path2 != null) {
-            Glide.with(this).load(path2).into(iv_cailiao2);  // 这做过了修改
+        try {
+            path2 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 1).split(";;;")[0];
+            if (path2 != null) {
+                Glide.with(this).load(path2).into(iv_cailiao2);  // 这做过了修改
+            }
+        } catch (Exception e) {
+
         }
-        path3 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 2).split(";;;")[0];
-        if (path3 != null) {
-            Glide.with(this).load(path3).into(iv_cailiao3);  // 这做过了修改
+        try {
+            path3 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 2).split(";;;")[0];
+            if (path3 != null) {
+                Glide.with(this).load(path3).into(iv_cailiao3);  // 这做过了修改
+            }
+        } catch (Exception e) {
+
         }
+
     }
 
     private void initListener() {
@@ -110,9 +123,8 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
             }
 
 
-                break;
-            case R.id.iv_cailiao2:
-            {
+            break;
+            case R.id.iv_cailiao2: {
                 Intent intent = new Intent(this, SelectPhotoActivity.class);
                 intent.putExtra("type", 1);
                 startActivity(intent);
@@ -125,9 +137,8 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
 //                } else {
 //                    showToast("您已上传材料，请勿重复上传");
 //                }
-                break;
-            case R.id.iv_cailiao3:
-            {
+            break;
+            case R.id.iv_cailiao3: {
                 Intent intent = new Intent(this, SelectPhotoActivity.class);
                 intent.putExtra("type", 2);
                 startActivity(intent);
@@ -140,7 +151,7 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
 //                } else {
 //                    showToast("您已上传材料，请勿重复上传");
 //                }
-                break;
+            break;
         }
     }
 

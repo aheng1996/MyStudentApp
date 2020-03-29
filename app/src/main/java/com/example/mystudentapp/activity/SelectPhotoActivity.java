@@ -46,15 +46,20 @@ public class SelectPhotoActivity extends BaseActivity {
         user = BaseMeassage.INSTANCE.getUser();
         type = getIntent().getIntExtra("type", 0);
         path = CaiLiaoCtrl.getPicPath(user.getBianHao(), type);
+        if (path == null) {
+            path = "";
+        }
         String[] s = path.split(";;;");
 
         initView();
-        selectedData.clear();
-        for (int i = 0; i < s.length; i++) {
-            selectedData.add(s[i]);
+        if (path != null && path.length() > 5) {
+            selectedData.clear();
+            for (int i = 0; i < s.length; i++) {
+                selectedData.add(s[i]);
+            }
+            selectedData.add("add");
+            photoWallAdapter.notifyDataSetChanged();
         }
-        selectedData.add("add");
-        photoWallAdapter.notifyDataSetChanged();
     }
 
     private void initView() {
@@ -99,7 +104,7 @@ public class SelectPhotoActivity extends BaseActivity {
     private void saveData() {
         String s = "";
         for (int i = 0; i < selectedData.size(); i++) {
-            if (!selectedData.get(i).equals("add")){
+            if (!selectedData.get(i).equals("add")) {
                 s += selectedData.get(i) + ";;;";
             }
         }
