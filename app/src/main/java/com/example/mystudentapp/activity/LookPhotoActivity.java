@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class LookPhotoActivity extends BaseActivity {
     private int type;
     private TextView tvTitle;  //标题
     private String path;
+    private String xh;
 
 
 
@@ -43,6 +45,7 @@ public class LookPhotoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look_photo);
         type=getIntent().getIntExtra("type",0);
+        xh=getIntent().getStringExtra("xh");
         user = BaseMeassage.INSTANCE.getUser();
         initView();
         initList();
@@ -53,7 +56,7 @@ public class LookPhotoActivity extends BaseActivity {
 
     private void initList() {
 
-        path = CaiLiaoCtrl.getPicPath(user.getBianHao(), type);
+        path = CaiLiaoCtrl.getPicPath(xh, type);
         if (path == null) {
             path = "";
         }
@@ -73,7 +76,6 @@ public class LookPhotoActivity extends BaseActivity {
     private void initRecycler() {
         if(images == null || images.size() == 0) return;
         if(adapter == null){
-
 
             rv.setLayoutManager(new GridLayoutManager(this,4));
             rv.setItemAnimator(new DefaultItemAnimator());

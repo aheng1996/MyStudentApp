@@ -117,18 +117,21 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
 
                 Intent intent = new Intent(this, LookPhotoActivity.class);
                 intent.putExtra("type", 0);
+                intent.putExtra("xh", xuehao);
 
                 startActivity(intent);
                 break;
             case R.id.tv_nengli:
                 Intent intent1 = new Intent(this, LookPhotoActivity.class);
                 intent1.putExtra("type", 1);
+                intent1.putExtra("xh", xuehao);
 
                 startActivity(intent1);
                 break;
             case R.id.tv_pinde:
                 Intent intent2 = new Intent(this, LookPhotoActivity.class);
                 intent2.putExtra("type", 2);
+                intent2.putExtra("xh", xuehao);
 
                 startActivity(intent2);
                 break;
