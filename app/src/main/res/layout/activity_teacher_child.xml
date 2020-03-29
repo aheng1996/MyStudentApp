@@ -38,6 +38,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:text="评分标准：
+学习目标明确，勤奋好学，有钻研精神，能创造性地进行学习，自觉
+完成作业，积极参加第二课堂，自觉扩大知识面，遵守课堂纪律，同时不迟到，不早退、不旷课。坚持四项基本原则，学习时事政策和参加政治活动，政治上积极要求进步，向党组织递交入党申请书，按时递交思想汇报；马列主义理论课、德育课、形势教育课政治学习、党团活动等从不缺勤。 "
+            android:layout_height="wrap_content">
+
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
 
@@ -50,8 +67,8 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="基本分："
-
+                android:text="评价分："
+                android:textSize="20sp"
                 android:layout_height="wrap_content" />
             <EditText
                 android:id="@+id/et_jiben"
@@ -65,6 +82,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_margin="10dp"
@@ -89,6 +107,8 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
+
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_margin="10dp"

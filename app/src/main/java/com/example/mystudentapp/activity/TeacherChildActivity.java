@@ -71,9 +71,9 @@ public class TeacherChildActivity extends BaseActivity implements View.OnClickLi
     private void save() {
         teacherPingjia=new TeacherPingjia();
         //传进去3个分 ，被评价人的学号.我的学号
-        teacherPingjia.setBianXian(Double.parseDouble(etBiaoXian.getText().toString()));
+//        teacherPingjia.setBianXian(Double.parseDouble(etBiaoXian.getText().toString()));
         teacherPingjia.setJiBenFen(Double.parseDouble(etJiBen.getText().toString()));
-        teacherPingjia.setYuanShi(Double.parseDouble(etJiangli.getText().toString()));  //原始就是原始奖励分
+//        teacherPingjia.setYuanShi(Double.parseDouble(etJiangli.getText().toString()));  //原始就是原始奖励分
 
         //打印个学号，看看学号是否为空
 
