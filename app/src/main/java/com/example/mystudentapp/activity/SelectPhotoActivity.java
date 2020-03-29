@@ -1,6 +1,5 @@
 package com.example.mystudentapp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,7 +60,19 @@ public class SelectPhotoActivity extends BaseActivity {
         startActivityForResult(intent,SELECTED_FINISH);
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case SELECTED_FINISH:
+                if (resultCode == RESULT_OK) {
+                    selectedData.clear();
+                    selectedData.addAll(data.getStringArrayListExtra(SELECTED_DATA));
+                    photoWallAdapter.notifyDataSetChanged();
+                }
+                break;
+        }
+    }
     class PhotoWallAdapter extends BaseRecyclerViewAdapter<String> {
         public PhotoWallAdapter(Context context, List<String> data, int itemLayoutId) {
             super(context, data, itemLayoutId, 3);

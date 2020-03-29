@@ -1,8 +1,11 @@
 package com.example.mystudentapp.base;
 
 import android.app.Application;
+import android.util.Log;
 
-public class MyApplication extends Application {
+import org.litepal.LitePalApplication;
+
+public class MyApplication extends LitePalApplication {
     private static MyApplication instance;
     public static MyApplication getGlobalContext() {
         return instance;
