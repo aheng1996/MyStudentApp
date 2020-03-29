@@ -83,6 +83,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Ba
                         public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                             return false;
                         }
+
                     })
 //                    .listener(new RequestListener<Drawable>() {
 //                        @Override
