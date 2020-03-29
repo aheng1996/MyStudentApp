@@ -45,15 +45,21 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
         user = BaseMeassage.INSTANCE.getUser();
         initView();
         initListener();
-        path1 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 0);
+
+    }
+
+    @Override
+    public void onEnterAnimationComplete() {
+        super.onEnterAnimationComplete();
+        path1 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 0).split(";;;")[0];
         if (path1 != null) {
             Glide.with(this).load(path1).into(iv_cailiao1);  // 这做过了修改
         }
-        path2 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 1);
+        path2 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 1).split(";;;")[0];
         if (path2 != null) {
             Glide.with(this).load(path2).into(iv_cailiao2);  // 这做过了修改
         }
-        path3 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 2);
+        path3 = CaiLiaoCtrl.getPicPath(user.getBianHao(), 2).split(";;;")[0];
         if (path3 != null) {
             Glide.with(this).load(path3).into(iv_cailiao3);  // 这做过了修改
         }
@@ -97,28 +103,43 @@ public class InfoAddActivity extends BaseActivity implements View.OnClickListene
 //                } else {
 //                    showToast("您已上传材料，请勿重复上传");
 //                }
-                goToActivity(SelectPhotoActivity.class);
+            {
+                Intent intent = new Intent(this, SelectPhotoActivity.class);
+                intent.putExtra("type", 0);
+                startActivity(intent);
+            }
+
 
                 break;
             case R.id.iv_cailiao2:
-                if (path2 == null) {
-                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                    //Intent.ACTION_GET_CONTENT = "android.intent.action.GET_CONTENT"
-                    intent.setType("image/*");
-                    startActivityForResult(intent, PICK_PHOTO2); // 打开相册
-                } else {
-                    showToast("您已上传材料，请勿重复上传");
-                }
+            {
+                Intent intent = new Intent(this, SelectPhotoActivity.class);
+                intent.putExtra("type", 1);
+                startActivity(intent);
+            }
+//                if (path2 == null) {
+//                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//                    //Intent.ACTION_GET_CONTENT = "android.intent.action.GET_CONTENT"
+//                    intent.setType("image/*");
+//                    startActivityForResult(intent, PICK_PHOTO2); // 打开相册
+//                } else {
+//                    showToast("您已上传材料，请勿重复上传");
+//                }
                 break;
             case R.id.iv_cailiao3:
-                if (path3 == null) {
-                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                    //Intent.ACTION_GET_CONTENT = "android.intent.action.GET_CONTENT"
-                    intent.setType("image/*");
-                    startActivityForResult(intent, PICK_PHOTO3); // 打开相册
-                } else {
-                    showToast("您已上传材料，请勿重复上传");
-                }
+            {
+                Intent intent = new Intent(this, SelectPhotoActivity.class);
+                intent.putExtra("type", 2);
+                startActivity(intent);
+            }
+//                if (path3 == null) {
+//                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//                    //Intent.ACTION_GET_CONTENT = "android.intent.action.GET_CONTENT"
+//                    intent.setType("image/*");
+//                    startActivityForResult(intent, PICK_PHOTO3); // 打开相册
+//                } else {
+//                    showToast("您已上传材料，请勿重复上传");
+//                }
                 break;
         }
     }
