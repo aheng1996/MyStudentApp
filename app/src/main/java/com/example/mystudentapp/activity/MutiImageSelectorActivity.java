@@ -323,9 +323,9 @@ public class MutiImageSelectorActivity extends BaseActivity implements EasyPermi
         }
     }
 
-    @Override
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+
         switch (requestCode) {
             case REQUEST_CAMERA:
                 if (Utils.fileExists(cameraPhotoFile.getPath())) {

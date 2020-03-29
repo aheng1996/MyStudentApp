@@ -2,6 +2,7 @@ package com.example.mystudentapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -31,6 +32,8 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
     private ImageView iv_cailiao3;
     private XiaoZu xiaozu;
 
+    private TextView tvWenTi,tvNengLi,tvPinde;
+
 
     private EditText etJiangli, etJiBen, etNengli;
 
@@ -49,6 +52,7 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
         String path1 = CaiLiaoCtrl.getPicPath(xuehao, 0);
         String path2 = CaiLiaoCtrl.getPicPath(xuehao, 1);
         String path3 = CaiLiaoCtrl.getPicPath(xuehao, 2);
+
         if (path1 != null) {
             Glide.with(this).load(path1).into(iv_cailiao1);
         }
@@ -69,6 +73,10 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
         ivBack.setOnClickListener(this);
         tvSave.setOnClickListener(this);
 
+        tvWenTi.setOnClickListener(this);
+        tvNengLi.setOnClickListener(this);
+        tvPinde.setOnClickListener(this);
+
     }
 
     private void initView() {
@@ -85,6 +93,12 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
         etJiBen = findViewById(R.id.et_jiben);
         etNengli = findViewById(R.id.et_nengli);
 
+        tvWenTi=findViewById(R.id.tv_wenti);
+        tvNengLi=findViewById(R.id.tv_nengli);
+        tvPinde=findViewById(R.id.tv_pinde);
+
+
+
     }
 
     @Override
@@ -96,6 +110,27 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.tv_save:
                 save();
+                break;
+
+            case R.id.tv_wenti:
+                //文体查看 0，能力是1，品德是2
+
+                Intent intent = new Intent(this, LookPhotoActivity.class);
+                intent.putExtra("type", 0);
+
+                startActivity(intent);
+                break;
+            case R.id.tv_nengli:
+                Intent intent1 = new Intent(this, LookPhotoActivity.class);
+                intent1.putExtra("type", 1);
+
+                startActivity(intent1);
+                break;
+            case R.id.tv_pinde:
+                Intent intent2 = new Intent(this, LookPhotoActivity.class);
+                intent2.putExtra("type", 2);
+
+                startActivity(intent2);
                 break;
 
         }
