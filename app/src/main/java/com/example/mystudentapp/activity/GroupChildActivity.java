@@ -35,7 +35,7 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
     private TextView tvWenTi,tvNengLi,tvPinde;
 
 
-    private EditText etJiangli, etJiBen, etNengli;
+    private EditText etJiangli, etJiBen, etNengli,et_neng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +90,7 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
         ivBack = findViewById(R.id.iv_back);
         tvSave = findViewById(R.id.tv_save);
         etJiangli = findViewById(R.id.et_jiangli);
+        et_neng = findViewById(R.id.et_neng);
         etJiBen = findViewById(R.id.et_jiben);
         etNengli = findViewById(R.id.et_nengli);
 
@@ -143,7 +144,7 @@ public class GroupChildActivity extends BaseActivity implements View.OnClickList
     private void save() {
         xiaozu = new XiaoZu();
         //传进去3个分 ，被评价人的学号.我的学号
-//        xiaozu.setJianglifen(Double.parseDouble(etJiangli.getText().toString()));
+        xiaozu.setJianglifen(Double.parseDouble(et_neng.getText().toString()));
         xiaozu.setJiBenFen(Double.parseDouble(etJiBen.getText().toString()));
         xiaozu.setNenglifen(Double.parseDouble(etNengli.getText().toString()));
 
